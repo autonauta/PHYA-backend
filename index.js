@@ -37,6 +37,6 @@ app.use("/api/report", require("./routes/report"));
 
 const port = process.env.PORT;
 
-app.listen(port, () => {
+app.listen(port, "0.0.0.0", () => {
   console.log(`WTPM server listening on port ${port}`);
 });
