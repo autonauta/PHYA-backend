@@ -19,7 +19,7 @@ exports.list = (req, res) => {
         error: "Something went wrong, plant list could not be consulted",
       });
     }
-    res.json({ data });
+    res.json(data);
   });
 };
 
