@@ -2,27 +2,25 @@ const User = require("../models/User");
 const jwt = require("jsonwebtoken");
 
 exports.register = (req, res) => {
-  console.log("req.body: ", req.body);
-  const user = new User(req.body);
+  console.log(JSON.stringify(req.body));
   if (
-    !req.body.name ||
-    !req.body.email ||
-    !req.body.password ||
-    !req.body.role ||
-    !req.body.password_check
+    req.body.name === null ||
+    req.body.email === null ||
+    req.body.password === null ||
+    req.body.role === null ||
+    req.body.passConfirm === null
   ) {
     return res.status(400).json({
       error: "No puede haber campos vacios",
     });
-  } else if (req.body.password != req.body.password_check) {
+  } else if (req.body.password != req.body.passConfirm) {
     return res.status(400).json({
       error: "Los passwords no coinciden",
     });
   } else {
+    const user = new User(req.body);
     user.save((error, user) => {
-      console.log("reached signup endpoint");
       if (error) {
-        console.log(JSON.stringify(error.code));
         if (error.code == "11000") {
           return res.status(400).json({
             error: "Ese correo ya se encuentra registrado",
