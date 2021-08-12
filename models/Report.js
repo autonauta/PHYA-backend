@@ -3,16 +3,16 @@ const { ObjectId } = mongoose.Schema;
 
 const reportSchema = new mongoose.Schema(
   {
-    planta: {
+    plant: {
       type: ObjectId,
       ref: "Plant",
     },
-    operador: {
+    operator: {
       type: ObjectId,
       ref: "User",
     },
     aireacion: Boolean,
-    presion_soplador: Number,
+    presion_soplador: String,
     flujo_alim: Boolean,
     flujo_ret: Boolean,
     flujo_desnatador: Boolean,
@@ -25,22 +25,18 @@ const reportSchema = new mongoose.Schema(
     limpieza_clorador: Boolean,
     limpieza_cisterna: Boolean,
     limpieza_rototamiz: Boolean,
-    sedimentacion_lodos: Number,
-    ph_entrada: Number,
-    ph_salida: Number,
-    cloro_salida: Number,
-    pastillas_cloro: Number,
+    sedimentacion_lodos: String,
+    ph_entrada: String,
+    ph_salida: String,
+    cloro_salida: String,
+    pastillas_cloro: String,
     desecho_lodos: Boolean,
     disposicion_lodos: Boolean,
     grasa_sopladores: Boolean,
     aceite_sopladores: Boolean,
     grasa_rototamiz: Boolean,
     aceite_rototamiz: Boolean,
-    dato_1: Number,
-    dato_2: Number,
-    dato_3: Number,
-    dato_4: Number,
-    dato_5: Number,
+    grafica_sedimentacion: [String],
     comentarios: String,
   },
   { timestamps: true }
