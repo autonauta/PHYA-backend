@@ -1,6 +1,7 @@
 const Report = require("../models/Report");
 
 exports.create = (req, res) => {
+  console.log(req.body);
   const report = new Report(req.body);
   report.save((err, data) => {
     if (err) {
